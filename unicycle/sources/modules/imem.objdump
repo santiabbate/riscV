@@ -1,0 +1,21 @@
+
+imem.out:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000000000 <led_counter-0x10>:
+   0:	00803083          	ld	ra,8(zero) # 8 <led_counter-0x8>
+   4:	00003183          	ld	gp,0(zero) # 0 <led_counter-0x10>
+   8:	01003103          	ld	sp,16(zero) # 10 <led_counter>
+   c:	01803403          	ld	s0,24(zero) # 18 <led_counter+0x8>
+
+0000000000000010 <led_counter>:
+  10:	00003203          	ld	tp,0(zero) # 0 <led_counter-0x10>
+  14:	001181b3          	add	gp,gp,ra
+  18:	00313023          	sd	gp,0(sp)
+
+000000000000001c <one_sec_loop>:
+  1c:	00120233          	add	tp,tp,ra
+  20:	fe8208e3          	beq	tp,s0,10 <led_counter>
+  24:	fe000ce3          	beqz	zero,1c <one_sec_loop>
